@@ -1,0 +1,26 @@
+body{
+    background-color: aquamarine;
+    text-align: center;
+    padding-top: 20%;
+}
+
+ 
+
+form .button{
+    height: 50%;
+    width: 20%;
+    border-radius: 15px;
+     color: #ffff;
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+     background:  rgb(11, 186, 244);
+    text-align: center;
+    padding: 10px;
+     margin-left: 38%;
+ 
+
+ }
+
+ 

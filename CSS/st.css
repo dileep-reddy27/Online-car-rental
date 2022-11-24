@@ -1,0 +1,18 @@
+body{
+    background-color: rgb(133, 244, 244);
+    margin: 50px 50px;
+  
+}
+ 
+ 
+h1{
+    text-align: center;
+}
+
+#card {
+    padding: 20px;
+    margin-top: 20px;
+    box-shadow: 10px 10px 5px grey;
+    background-image: linear-gradient(to left,rgb(248, 211, 88), rgb(231, 179, 65)); 
+    font-weight: 500;
+  }
