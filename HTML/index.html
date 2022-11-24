@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Car Rental Website</title>
+        <!--Link to css-->
+        <link rel="stylesheet" href="style.css">
+        <!--Box Icons-->
+        <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+        <!-- Firebase CDN -->
+        <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/9.13.0/firebase-firestore.js"></script>
+      
+
+    </head>
+    <body>
+
+    
+
+        <!--Header-->
+         <header>
+              <a href="#" class="logo"><img src="img/vehicle-icon-png-car-sedan-4.png" alt=""></a>
+             <div class="bx bx-menu" id="menu-icon"></div>
+            <ul class="navbar">
+
+                <li><a href="#home">Home</a></li>
+                <li><a href="#ride">Ride</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#reviews">Reviews</a></li>
+
+            </ul>
+            <div class="header-btn" id="dudee">
+
+             <a href="admin_login.html" class="sign-in">&nbsp; Admin</a>
+
+                <!-- <a href="login.html" class="sign-in">Sign In</a> -->
+
+                <a href="login.html" class="sign-in" id="fire">Sign In</a>
+                <!-- <button id="fire" class="sign-in" >Sign in</button> -->
+                <a class="sign-in" id="water" style="visibility:hidden"  >Log out </a>
+                <!-- <button id="water" style="visibility:hidden" class="sign-in">Log out</button> -->
+            </div>
+        </header>     
+        <!--home-->
+        
+        <section class="home" id="home">
+            <div class="text">
+                <h1><span>Looking</span> to<br>rent a car</h1>
+                <p>YOU ARE AT THE RIGHT SPOT</p>
+            </div>
+
+            <div class="form-container">
+                <form action="available_cars1.html">
+                    <div class="input-box">
+                        <span> Location</span>
+                        <input type="search" name="" id="" placeholder="Search Places">
+                    </div>
+                    <div class="input-box">
+                        <span>Pick A dates</span>
+                        <input type="date" name="" id="">
+                    </div>
+                    <div class="input-box">
+                        <span>Return Date</span>
+                        <input type="date" name="" id="">
+                    </div>
+                    <input type="submit" name="" id="" class="btn">
+                </form>
+            </div>
+        </section>
+        <!--ride-->
+        <selection class="ride" id="ride">
+            <div class="heading">
+                <br>
+                <span>How It Works</span>
+                <h1>Rent With 3 Easy Steps</h1>
+            </div>
+            <div class="ride-container">
+                <div class="box">
+                    <i class='bx bxs-map'></i>
+                    <h2>Choose A Location</h2>
+             </div>
+
+                <div class="box">
+                    <i class='bx bx-calendar-check'></i>
+                    <h2>Pick a Date</h2>
+                 </div>
+
+                <div class="box">
+                    <i class='bx bx-calendar-star'></i>
+                    <h2>Book a Car</h2>
+                 </div>
+            </div>
+        </selection>
+
+        <!--services-->
+        <!-- <section class="services" id="services">
+            <div class="heading">
+                <span>Best Services</span>
+                <h1>Explore Our Top Deals  </h1>
+            </div>
+            <div class="services-container">
+                <div class="box">
+                    <div class="box-img">
+                        <img src="img/tata nexon ev max.webp" alt="">
+                    </div>
+                    <p>2021</p>
+                    <h3>Tata Nexon EV Max</h3>
+                    <h2> ₹ 36,998 | ₹ 5,581<span>/day</span></h2>
+                    <a href="login_net_v2.html" class="btn">Rent Now</a>
+                </div>
+                <div class="box">
+                    <div class="box-img">
+                        <img src="img/car2.jpg" alt="">
+                    </div>
+                    <p>2017</p>
+                    <h3>2017 Honda Civic</h3>
+                    <h2> ₹ 40,623 | ₹ 5,789<span>/day</span></h2>
+                    <a href="login_net_v2.html" class="btn">Rent Now</a>
+                </div>
+
+                <div class="box">
+                    <div class="box-img">
+                        <img src="img/car3.jpg" alt="">
+                    </div>
+                    <p>2019</p>
+                    <h3>2019 Honda Fit </h3>
+                    <h2> ₹ 42,623 | ₹ 6,125<span>/day</span></h2>
+                    <a href="login_net_v2.html" class="btn">Rent Now</a>
+                </div>
+
+                <div class="box">
+                    <div class="box-img">
+                        <img src="img/car4.jpg" alt="">
+                    </div>
+                    <p>2017</p>
+                    <h3>2017 Honda Civic</h3>
+                    <h2> ₹ 39,999 | ₹ 5,280<span>/day</span></h2>
+                    <a href="login_net_v2.html" class="btn">Rent Now</a>
+                </div>
+
+                <div class="box">
+                    <div class="box-img">
+                        <img src="img/maruti grand vitara.webp" alt="">
+                    </div>
+                    <p>2020</p>
+                    <h3>Maruti grand vitara</h3>
+                    <h2> ₹ 36,998 | ₹ 5,581<span>/day</span></h2>
+                    <a href="login_net_v2.html" class="btn">Rent Now</a>
+                </div>
+ 
+             
+                <div class="box">
+                    <div class="box-img">
+                        <img src="img/02_economy_coolgrey.png" alt="">
+                    </div>
+                    <p>2017</p>
+                    <h3>Hyundai i10</h3>
+                    <h2> ₹ 36,316 | ₹ 5,188<span>/day</span></h2>
+                    <a href="login_net_v2.html" class="btn">Rent Now</a>
+                </div>
+            </div>
+
+ 
+        </section> -->
+        
+
+
+
+    <div id="myDIV" class="services-container">
+     
+    </div> 
+
+ 
+        <!--about-->
+        <section clas="about" id="about">
+            <div class="heading">
+                <span>About Us</span>
+                <h1>Best Customer Experience</h1>
+            </div>
+            <div class="about-container">
+                <div class="about-img">
+                    <img src="img/prime-sedan.png" alt="">
+                </div>
+                <div class="about-text">
+                    <span>About Us</span>
+                    <p> EVIS is India's leading car search venture that helps users buy cars that are right for them. Its website and app carry rich automotive content 
+                        such as expert reviews, detailed specs and prices, comparisons as well as videos and pictures of all car brands and models available in India. The company 
+                        has tie-ups with many auto manufacturers, more than 4000 car dealers and numerous financial institutions to facilitate the purchase of vehicles.</p>
+                     <a href="#" class="btn">Learn More</a>
+                </div>
+            </div>
+        </section>
+        <!--reviewas-->
+        <section class="reviews" id="reviews">
+            <div class="heading">
+                <h1>Reviews</h1>
+                <h2>What Our Customer Say</h2>
+            </div>
+            <div class="reviews-container">
+                <div class="box">
+                    <div class="rev-img">
+                        <img src="img/rev1.jpg" alt="">
+                    </div>
+                    <h2>Ravi</h2>
+                    <div class="stars">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star-half'></i>
+                    </div>
+                    <p> Had 24 days in the India, upgrading my car was no problem, the staff were all lovely to deal with and friendly and the returns procedure was seamless.
+
+                        I would use them again!</p>
+                </div>
+                <div class="box">
+                    <div class="rev-img">
+                        <img src="img/rev2.jpg" alt="">
+                    </div>
+                    <h2>Harshit</h2>
+                    <div class="stars">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                     </div>
+                    <p> EVIS cars are fairly clean.They have multiple colour options.Definetly would recommend to others</p>
+                </div>
+                <div class="box">
+                    <div class="rev-img">
+                        <img src="img/rev3.jpg" alt="">
+                    </div>
+                    <h2>Shreya</h2>
+                    <div class="stars">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                    </div>
+                    <p>A great experience!!!Check in was super easy and super fast.Personnel were friendly and instruction were simple and easy to follow. Returning car was fast and final price was same a quoted price.
+                    </p>
+                </div>
+            </div>  
+        </section>
+
+        <div id="disqus_thread"></div>
+
+        <script>
+            /**
+            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+            *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+            
+            // var disqus_config = function () {
+            // this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+            // this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+            // };
+            
+            (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://dileep-1.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+            })();
+        </script>
+
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <!--newsletter-->
+        <section class="newsletter">
+            <h2>Subscribe to EVIS</h2>
+            <div class="box">
+                <input type="text" placeholder="Enter your email...">
+                <a href="#" class="btn">Subscribe</a>
+            </div>
+        </section>
+        <div class="copyright">
+            <p>&#169; EVIS All right rerserved</p>
+            <div class="Social">
+                <a href="#"><i class='bx bxl-facebook'></i></a>
+                <a href="#"><i class='bx bxl-twitter'></i></a>
+                <a href="#"><i class='bx bxl-instagram'></i></a>
+            </div>
+        </div>
+        <!--scrollreveal-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+        <script src="main.js"></script>
+
+        <script id="dsq-count-scr" src="//dileep-1.disqus.com/count.js" async></script>
+         
+
+
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-analytics.js";
+            import {getFirestore,doc,getDocs,collection, setDoc,deleteDoc } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-firestore.js";
+            // import { storage } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+            import { getStorage, ref, getDownloadURL, uploadBytesResumable } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-storage.js";
+            import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-auth.js";
+
+             // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+          
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+              apiKey: "AIzaSyB_66P34bYuLkFvRF3MRfx9VIjh9lgrfk8",
+              authDomain: "registration-35687.firebaseapp.com",
+              databaseURL: "https://registration-35687-default-rtdb.asia-southeast1.firebasedatabase.app",
+              projectId: "registration-35687",
+              storageBucket: "registration-35687.appspot.com",
+              messagingSenderId: "639803864021",
+              appId: "1:639803864021:web:f10b3022c5b859e79cc35c",
+              measurementId: "G-BEN514J323"
+            };
+          
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+            const firestore=getFirestore();
+            const db=getFirestore(app);
+
+            // get main div
+
+            var files=[];
+            var reader=new FileReader();
+
+            var namebox=document.getElementById('namebox');
+            var extlab=document.getElementById('extlab');
+            var myimg=document.getElementById('myming');
+            var proglab=document.getElementById('upprogress');
+            var SelBtn=document.getElementById('selbtn');
+            var UpBton=document.getElementById('upbtn');
+
+            var input=document.createElement('input');
+
+            input.type='file';
+
+            input.onchange=e=>{
+                files=e.target.files;
+
+                var extention=GetFileExt(files[0]);
+
+                var name=GetFileName(files[0]);
+
+                namebox.value=name;
+                extlab.innerHTML=extention;
+
+                reader.readAsDataURL(fiiles[0]);
+            }
+
+            reader.onload=function(){
+                myimg.src=reader.result;
+            }
+            
+            async function readAllCars(){
+                const querySnapshot = await getDocs(collection(firestore, "Cars"))
+                querySnapshot.forEach((doc) => {
+                const carDetails = doc.data();
+               
+            function myFunction() {
+                var newdiv = document.createElement("div");
+                newdiv.className = "box";                      //creating div for each value
+
+                var newdiv1=document.createElement("div");
+                newdiv1.className="box-img";
+
+                const image = document.createElement("img"); 
+                image.src=carDetails.Image;
+                newdiv1.appendChild(image);
+                newdiv.appendChild(newdiv1);
+                
+                const para = document.createElement("p");
+                para.innerHTML=carDetails.Year;
+                newdiv.appendChild(para);
+
+                const para1 = document.createElement("h3");
+                para1.innerHTML=carDetails.Name;
+                newdiv.appendChild(para1);
+
+                const para2 = document.createElement("h2");
+                const rupee = "₹"
+                const price = rupee + carDetails.Price_week + "  |  " + rupee + carDetails.Price_day + "/day";
+                para2.innerHTML = price;
+                newdiv.appendChild(para2);
+
+                const para3 = document.createElement("a");
+                para3.className="btn";
+                para3.innerHTML="RENT NOW"
+                // const formURL =  "https://prod.d1cyhu46fhbfk5.amplifyapp.com/form.html?carName="+carDetails.Name+"&price="+price;
+               // para3.href=formURL
+                newdiv.appendChild(para3);
+
+                document.getElementById("myDIV").append(newdiv);
+ 
+                }
+                 myFunction();
+                });
+            }
+           
+            readAllCars();
+
+            function loginCheck()
+            {
+                if(userLoggedin()){
+                    console.log("loggedin")
+                    document.getElementById("fire").style.visibility = 'hidden';
+                    document.getElementById("water").style.visibility = 'visible';
+                }
+            
+            }
+
+            function userLoggedin(){
+                const userCookie = getCookie("email");
+                console.log(userCookie)
+                let userEmail = userCookie.split("=")[1]
+                if (userEmail != "") {
+                    return true;
+                } 
+                return false;
+            }
+
+            function getCookie(cname) {
+                let name = cname + "=";
+                let ca = document.cookie.split(';');
+                for(let i = 0; i < ca.length; i++) {
+                    let c = ca[i];
+
+                    while (c.charAt(0) == ' ') {
+                        c = c.substring(1);
+                    }
+                    if (c.indexOf(name) == 0) {
+                        return c;
+                    }
+                }
+                return "";
+            }   
+
+            loginCheck();
+
+            async function signOutUser() {
+                const auth = getAuth();
+                await signOut(auth).then(() => {
+                    // Sign-out successful.
+                    console.log("singed out")
+                }).catch((error) => {
+                    alert(error)
+                });
+
+                const userCookie = getCookie('email');
+                console.log(userCookie)
+                document.cookie=userCookie+";max-age=0";  
+
+                document.getElementById("fire").style.visibility = 'visible';
+                document.getElementById("water").style.visibility = 'hidden';
+                console.log("logged out")
+            }
+            
+            document.getElementById("water").addEventListener('click',signOutUser)
+
+
+            </script>
+          
+
+
+    </body>
+</html>

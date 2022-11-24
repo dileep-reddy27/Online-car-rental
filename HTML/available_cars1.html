@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Car Rental Website</title>
+        <!--Link to css-->
+        <link rel="stylesheet" href="style.css">
+        <!--Box Icons-->
+        <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+
+
+    </head>
+
+
+    <body>
+
+        <div id="myDIV" class="services-container">
+     
+        </div> 
+
+
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-analytics.js";
+            import {getFirestore,doc,getDocs,collection, setDoc,deleteDoc } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-firestore.js";
+            // import { storage } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
+            import { getStorage, ref, getDownloadURL, uploadBytesResumable } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-storage.js";
+
+             // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+          
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+              apiKey: "AIzaSyB_66P34bYuLkFvRF3MRfx9VIjh9lgrfk8",
+              authDomain: "registration-35687.firebaseapp.com",
+              databaseURL: "https://registration-35687-default-rtdb.asia-southeast1.firebasedatabase.app",
+              projectId: "registration-35687",
+              storageBucket: "registration-35687.appspot.com",
+              messagingSenderId: "639803864021",
+              appId: "1:639803864021:web:f10b3022c5b859e79cc35c",
+              measurementId: "G-BEN514J323"
+            };
+          
+
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+            const firestore=getFirestore();
+            const db=getFirestore(app);
+
+            async function readAllCars(){
+
+
+
+                
+                const querySnapshot = await getDocs(collection(firestore, "Cars"))
+                querySnapshot.forEach((doc) => {
+                const carDetails = doc.data();
+               
+                var newdiv = document.createElement("div");
+                newdiv.className = "box";                      //creating div for each value
+
+                var newdiv1=document.createElement("div");
+                newdiv1.className="box-img";
+
+                const image = document.createElement("img"); 
+                image.src=carDetails.Image;
+                newdiv1.appendChild(image);
+                newdiv.appendChild(newdiv1);
+                
+                const para = document.createElement("p");
+                para.innerHTML=carDetails.Year;
+                newdiv.appendChild(para);
+
+                const para1 = document.createElement("h3");
+                para1.innerHTML=carDetails.Name;
+                newdiv.appendChild(para1);
+
+                const para2 = document.createElement("h2");
+                const rupee = "₹"
+                const price = rupee + carDetails.Price_week + "  |  " + rupee + carDetails.Price_day + "/day";
+                para2.innerHTML = price;
+                newdiv.appendChild(para2);
+
+                const para3 = document.createElement("a");
+                para3.className="btn";
+                para3.innerHTML="RENT NOW"
+                // redirection(carDetails.Name, price)
+
+
+                const formURL =  "https://defaultt.d1u9rscstlfj70.amplifyapp.com/form.html?carName="+carDetails.Name+"&price="+price;
+                para3.href=formURL
+                newdiv.appendChild(para3);
+
+                document.getElementById("myDIV").append(newdiv);
+ 
+                });
+            }
+            readAllCars();
+
+
+        </script>
+        
+    </body>
+</html>

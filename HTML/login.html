@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Login + Firebase Database</title>
+         <!-- Cool Google Fonts -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap" rel="stylesheet">
+        <!-- Our stylesheet -->
+         <link rel="stylesheet" type="text/css" href="logicstyle 1.css">
+
+    </head>
+    <body>
+
+        <div class="login-wrap">
+            <div class="login-html">
+                <input id="tab-1" type="radio" name="tab" class="sign-in" checked>
+                <label for="tab-1" class="tab" >Sign In</label>
+                <input id="tab-2" type="radio" name="tab" class="sign-up">
+                <label for="tab-2" class="tab">Sign Up</label>
+    
+                <div class="login-form">
+                    <!-- Sign in page  -->
+                    <div class="sign-in-htm">
+                        <div class="group">
+                            <label for="text" class="label">Email</label>
+                            <input type="text" id="Email_id" class="input" >
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Password</label>
+                            <input id="pass" type="password" class="input" data-type="password">
+                        </div>
+                        <div class="group">
+                            <input id="check" type="checkbox" class="check" unchecked>
+                            <label for="check"><span class="icon"></span> Keep me Signed in</label>
+                        </div>
+                        <div class="group">
+                            
+                             <!-- <a href="index 1.html" type="submit" class="button"> submit</a> -->
+                             <button id="login" class="button" onclick="login()" >Login</button>
+    
+                        </div>
+                        <div class="hr"></div>
+                        <div class="foot-lnk">
+                            <a href="#forgot">Forgot Password?</a>
+                        </div>
+                    </div>
+    
+                    <!-- sign up page -->
+                    <div class="sign-up-htm">
+                        <div class="group">
+                            <label for="text" class="label">Email</label>
+                            <input id="Email_id_singup" type="email" class="input">
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Password</label>
+                            <input id="pass_singup" type="password" class="input" data-type="password">
+                        </div>
+                        <div class="group">
+                            <label for="pass" class="label">Repeat Password</label>
+                            <input id="password" type="password" class="input" data-type="password">
+                        </div>
+                       
+                        <div class="group">
+                            <!-- <a href="login_net_v2.html" type="submit" class="button"> sign up</a> -->
+                            <button id="register" class="button" onclick="register()">Register</button>
+    
+                        </div>
+                        <div class="hr"></div>
+                        <div class="foot-lnk">
+                            <label for="tab-1">Already Member?</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+
+
+    <!-- Our script must be loaded after firebase references -->
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyB_66P34bYuLkFvRF3MRfx9VIjh9lgrfk8",
+            authDomain: "registration-35687.firebaseapp.com",
+            databaseURL: "https://registration-35687-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "registration-35687",
+            storageBucket: "registration-35687.appspot.com",
+            messagingSenderId: "639803864021",
+            appId: "1:639803864021:web:f10b3022c5b859e79cc35c",
+            measurementId: "G-BEN514J323"
+        }; 
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        // Initialize variables
+        const auth = firebase.auth()
+        const database = firebase.database()
+        
+        // Set up our register function
+        async function register () {
+            // Get all our input fields
+            email = document.getElementById('Email_id_singup').value
+            password = document.getElementById('pass_singup').value
+         
+            // Validate input fields
+            if (validate_email(email) == false || validate_password(password) == false) {
+            alert('Email or Password is Outta Line!!')
+            return
+            // Don't continue running the code
+            }
+        
+            console.log(auth)
+            // Move on with Auth
+            await auth.createUserWithEmailAndPassword(email, password)
+            .then(() => {
+                alert("User Created!!")
+            })
+            .catch(function(error) {
+            // Firebase will use this to alert of its errors
+            var error_code = error.code
+            var error_message = error.message
+        
+            alert(error_message)
+            })
+        }
+        
+        // Set up our login function
+        async function login () {
+            // Get all our input fields
+            email = document.getElementById('Email_id').value
+            password = document.getElementById('pass').value
+            console.log("login")
+        
+            // Validate input fields
+            if (validate_email(email) == false || validate_password(password) == false) {
+                alert('Email or Password is Outta Line!!')
+                return
+                // Don't continue running the code
+            }
+
+            try {
+                await auth.signInWithEmailAndPassword(email, password)
+                .then(function() {
+                    // Declare user variable
+                    var user = auth.currentUser
+                    // DOne
+                    alert('User Logged In!!')
+
+                setCookie('email',email);
+
+                }).catch(function(error) {
+                    // Firebase will use this to alert of its errors
+                    var error_code = error.code
+                    var error_message = error.message
+                    const msg = "There is no user record corresponding to this identifier. The user may have been deleted."
+                
+                    if(error_message == msg) {
+                        alert("User is not regiserted. Please sign-up first and then login.")
+                    } else {
+                        alert(error_message)
+                    }
+                })
+                window.location.replace("https://defaultt.d1u9rscstlfj70.amplifyapp.com/index.html");
+            } catch(err) {
+                alert(err)
+            }
+        }
+        // document.cookie = "username=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC";
+
+ 
+         // Validate Functions
+        function validate_email(email) {
+            expression = /^[^@]+@\w+(\.\w+)+\w$/
+            if (expression.test(email) == true) {
+            // Email is good
+            return true
+            } else {
+            // Email is not good
+            return false
+            }
+        }
+        
+        function validate_password(password) {
+            // Firebase only accepts lengths greater than 6
+            if (password < 6) {
+            return false
+            } else {
+            return true
+            }
+        }
+
+        function setCookie(name,value) {
+            var expires = "";
+            var date = new Date();
+            date.setTime(date.getTime() + (1*24*60*60*1000)); // day * milli seconds per day
+            expires = "; expires=" + date.toUTCString();
+            document.cookie = name + "=" + (value || "")  + expires;
+        }
+
+
+        
+    </script>
+
+</html>
